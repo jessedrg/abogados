@@ -2,8 +2,13 @@
 
 import type React from "react"
 import { useState, useRef, useEffect, useMemo } from "react"
-import { useChat } from "@ai-sdk/react"
 import { ArrowUp } from "lucide-react"
+
+interface Message {
+  id: string
+  role: "user" | "assistant"
+  content: string
+}
 
 interface HeroSectionProps {
   customTitle?: string
@@ -19,6 +24,7 @@ export function HeroSection({ customTitle, customSubtitle, locality }: HeroSecti
   const [displayedTexts, setDisplayedTexts] = useState<Record<string, string>>({})
   const [inputValue, setInputValue] = useState("")
   const [isInputFocused, setIsInputFocused] = useState(false)
+  const [isSending, setIsSending] = useState(false)
   const messagesContainerRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const chatContainerRef = useRef<HTMLDivElement>(null)
@@ -27,9 +33,7 @@ export function HeroSection({ customTitle, customSubtitle, locality }: HeroSecti
     ? `Hola, soy del equipo de LEGAL AGENCIA. Veo que necesitas asesoría legal en ${locality}. ¿En qué área del derecho necesitas ayuda?`
     : "Hola, soy del equipo de LEGAL AGENCIA. ¿En qué zona de España necesitas un abogado?"
 
-  const { messages, isLoading, setMessages } = useChat({
-    api: "/api/chat",
-  })
+  const [messages, setMessages] = useState<Message[]>([])
 
   useEffect(() => {
     if (leadSent || messages.length < 4) return
@@ -166,7 +170,7 @@ export function HeroSection({ customTitle, customSubtitle, locality }: HeroSecti
         behavior: "smooth",
       })
     }
-  }, [messages, isLoading, welcomeText, displayedTexts])
+  }, [messages, isSending, welcomeText, displayedTexts])
 
   useEffect(() => {
     if (messages.length > 0) {
@@ -185,8 +189,6 @@ export function HeroSection({ customTitle, customSubtitle, locality }: HeroSecti
       return () => clearTimeout(timeoutId)
     }
   }, [isInputFocused])
-
-  const [isSending, setIsSending] = useState(false)
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
