@@ -1,5 +1,4 @@
-import { streamText, convertToModelMessages, type UIMessage } from "ai"
-import { openai } from "@ai-sdk/openai"
+import { generateText } from "ai"
 
 export const maxDuration = 30
 
@@ -21,15 +20,15 @@ REGLAS:
 - Sin emojis, sin markdown, sin listas`
 
 export async function POST(req: Request) {
-  const { messages }: { messages: UIMessage[] } = await req.json()
+  const { messages } = await req.json()
 
-  const result = streamText({
-    model: openai("gpt-4o-mini"),
+  const { text } = await generateText({
+    model: "openai/gpt-4o-mini",
     system: SYSTEM_PROMPT,
-    messages: convertToModelMessages(messages),
+    messages,
     maxTokens: 150,
     temperature: 0.7,
   })
 
-  return result.toUIMessageStreamResponse()
+  return Response.json({ role: "assistant", content: text })
 }
