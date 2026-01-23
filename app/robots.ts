@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/admin/"],
     },
-    sitemap: "https://www.tuabogado.com/sitemap-v1.xml",
+    sitemap: "https://www.legalagencia.com/sitemap-v1.xml",
   }
 }

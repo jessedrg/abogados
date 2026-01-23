@@ -24,8 +24,8 @@ export function HeroSection({ customTitle, customSubtitle, locality }: HeroSecti
   const inputRef = useRef<HTMLInputElement>(null)
 
   const fullWelcomeText = locality 
-    ? `Hola, soy del equipo de SERENA. Veo que estás buscando residencia en ${locality}. ¿Qué tipo de cuidado necesita tu familiar?`
-    : "Hola, soy del equipo de SERENA. ¿En qué zona de España estás buscando residencia?"
+    ? `Hola, soy del equipo de LEGAL AGENCIA. Veo que necesitas asesoría legal en ${locality}. ¿En qué área del derecho necesitas ayuda?`
+    : "Hola, soy del equipo de LEGAL AGENCIA. ¿En qué zona de España necesitas un abogado?"
 
   const { messages, sendMessage, status } = useChat({
     transport: new DefaultChatTransport({ api: "/api/chat" }),
@@ -76,7 +76,7 @@ export function HeroSection({ customTitle, customSubtitle, locality }: HeroSecti
                   ?.filter((p): p is { type: "text"; text: string } => p.type === "text")
                   .map((p) => p.text)
                   .join("") || ""
-          return `${m.role === "user" ? "Cliente" : "Serena"}: ${content}`
+          return `${m.role === "user" ? "Cliente" : "Legal Agencia"}: ${content}`
         })
         .join("\n\n")
 
@@ -88,7 +88,7 @@ export function HeroSection({ customTitle, customSubtitle, locality }: HeroSecti
           telefono,
           zona: "Ver conversación",
           tipoAtencion: "Ver conversación",
-          detalles: "Lead capturado via chat SERENA",
+          detalles: "Lead capturado via chat LEGAL AGENCIA",
           conversacion,
         }),
       })
@@ -211,26 +211,26 @@ export function HeroSection({ customTitle, customSubtitle, locality }: HeroSecti
   return (
     <section className="relative flex flex-col min-h-screen bg-background">
       <header className="flex items-center justify-between px-4 sm:px-6 md:px-12 py-4 sm:py-6 border-b border-border/30">
-        <span className="font-serif text-base sm:text-lg tracking-tight text-foreground">SERENA</span>
+        <span className="font-serif text-base sm:text-lg tracking-tight text-foreground">LEGAL AGENCIA</span>
         <span className="text-[9px] sm:text-[10px] tracking-[0.3em] uppercase font-sans text-muted-foreground">
-          Tu familia merece lo mejor
+          Tu derecho, nuestra prioridad
         </span>
       </header>
 
       <div className="flex-1 flex flex-col px-4 sm:px-6 md:px-12 py-6 sm:py-8 md:py-12">
         <div className="text-center mb-6 sm:mb-10 md:mb-16">
           <p className="text-[9px] sm:text-[10px] tracking-[0.4em] uppercase text-muted-foreground mb-3 sm:mb-4 font-sans">
-            Agencia de cuidado senior
+            Abogados especializados en toda España
           </p>
           <h1 className="font-serif text-4xl sm:text-6xl md:text-8xl lg:text-9xl tracking-tighter text-foreground">
             {customTitle ? (
               <span className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl">{customTitle}</span>
             ) : (
-              <>CUIDAR<span className="text-2xl sm:text-3xl md:text-4xl align-super font-sans">®</span></>
+              <>JUSTICIA<span className="text-2xl sm:text-3xl md:text-4xl align-super font-sans">®</span></>
             )}
           </h1>
           <p className="text-xs sm:text-sm md:text-base text-muted-foreground mt-4 sm:mt-6 max-w-md mx-auto font-sans leading-relaxed px-2">
-            {customSubtitle || "Conectamos familias con las mejores residencias. Sin intermediarios. Sin letra pequeña. Solo el match perfecto."}
+            {customSubtitle || "Conectamos clientes con los mejores abogados. Sin esperas. Primera consulta gratuita. El abogado que necesitas."}
           </p>
         </div>
 
@@ -239,45 +239,44 @@ export function HeroSection({ customTitle, customSubtitle, locality }: HeroSecti
           <div className="flex flex-col gap-4 sm:gap-6 order-2 lg:order-1">
             <div className="relative group">
               <img
-                src="/elderly-care-home.jpg"
-                alt="Cuidado profesional de mayores"
+                src="/lawyer-office.jpg"
+                alt="Despacho de abogados profesional"
                 className="w-full h-[250px] sm:h-[350px] md:h-[450px] object-cover"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent p-4 sm:p-6">
                 <p className="text-[9px] sm:text-[10px] tracking-[0.3em] uppercase font-sans text-foreground/80">
-                  +500 familias ya confían en nosotros
+                  +2.000 casos resueltos con éxito
                 </p>
               </div>
             </div>
 
             <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-2 sm:pt-4">
               <div className="text-center">
-                <p className="font-serif text-xl sm:text-2xl md:text-3xl text-foreground">2h</p>
+                <p className="font-serif text-xl sm:text-2xl md:text-3xl text-foreground">24h</p>
                 <p className="text-[8px] sm:text-[9px] tracking-[0.2em] uppercase text-muted-foreground mt-1 font-sans">
                   Respuesta
                 </p>
               </div>
               <div className="text-center border-x border-border/30">
-                <p className="font-serif text-xl sm:text-2xl md:text-3xl text-foreground">100%</p>
+                <p className="font-serif text-xl sm:text-2xl md:text-3xl text-foreground">95%</p>
                 <p className="text-[8px] sm:text-[9px] tracking-[0.2em] uppercase text-muted-foreground mt-1 font-sans">
-                  Verificado
+                  Casos ganados
                 </p>
               </div>
               <div className="text-center">
                 <p className="font-serif text-xl sm:text-2xl md:text-3xl text-foreground">0€</p>
                 <p className="text-[8px] sm:text-[9px] tracking-[0.2em] uppercase text-muted-foreground mt-1 font-sans">
-                  Compromiso
+                  1ª Consulta
                 </p>
               </div>
             </div>
 
             <blockquote className="hidden sm:block border-l-2 border-foreground/20 pl-4 mt-4">
               <p className="text-xs sm:text-sm font-sans text-muted-foreground italic leading-relaxed">
-                "Nos importa tu ser querido tanto como a ti. Por eso trabajamos solo con residencias que cumplen
-                nuestros estándares de excelencia."
+                "Cada caso es único y merece la atención de un especialista. Por eso conectamos a cada cliente con el abogado perfecto para su situación."
               </p>
               <cite className="text-[9px] sm:text-[10px] tracking-[0.2em] uppercase text-foreground/60 mt-2 block not-italic font-sans">
-                — Equipo SERENA
+                — Equipo LEGAL AGENCIA
               </cite>
             </blockquote>
           </div>
@@ -292,10 +291,10 @@ export function HeroSection({ customTitle, customSubtitle, locality }: HeroSecti
                 </p>
               </div>
               <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl tracking-tight text-foreground">
-                Encuentra tu match
+                Tu abogado ideal
               </h2>
               <p className="text-[10px] sm:text-xs text-muted-foreground mt-2 font-sans">
-                Responde 4 preguntas y te conectamos con la residencia ideal
+                Responde 4 preguntas y te conectamos con el abogado perfecto
               </p>
             </div>
 
@@ -397,7 +396,7 @@ export function HeroSection({ customTitle, customSubtitle, locality }: HeroSecti
             <div className="flex flex-wrap items-center justify-center gap-2 sm:justify-between mt-3 sm:mt-4 text-[8px] sm:text-[9px] tracking-[0.15em] uppercase text-muted-foreground font-sans">
               <span>Conversación privada</span>
               <span className="hidden sm:inline">·</span>
-              <span>Respuesta en 2h</span>
+              <span>Respuesta en 24h</span>
               <span className="hidden sm:inline">·</span>
               <span>Asesor humano</span>
             </div>
