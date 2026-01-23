@@ -1,4 +1,5 @@
 import { streamText, convertToModelMessages, type UIMessage } from "ai"
+import { openai } from "@ai-sdk/openai"
 
 export const maxDuration = 30
 
@@ -23,10 +24,10 @@ export async function POST(req: Request) {
   const { messages }: { messages: UIMessage[] } = await req.json()
 
   const result = streamText({
-    model: "anthropic/claude-sonnet-4",
+    model: openai("gpt-4o-mini"),
     system: SYSTEM_PROMPT,
     messages: convertToModelMessages(messages),
-    maxOutputTokens: 150, // Respuestas más cortas
+    maxTokens: 150,
     temperature: 0.7,
   })
 
