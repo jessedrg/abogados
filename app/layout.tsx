@@ -17,14 +17,6 @@ export const metadata: Metadata = {
     title: "LEGAL AGENCIA — Encuentra el abogado perfecto",
     description:
       "Te ayudamos a encontrar el mejor abogado para tu caso. Asesoramiento personalizado y primera consulta gratuita.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "LEGAL AGENCIA - Abogados especializados",
-      },
-    ],
     locale: "es_ES",
     type: "website",
   },
@@ -32,24 +24,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "LEGAL AGENCIA — Encuentra el abogado perfecto",
     description: "Te ayudamos a encontrar el mejor abogado para tu caso.",
-    images: ["/og-image.jpg"],
-  },
-  icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.jpg",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.jpg",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.jpg",
   },
 }
 
