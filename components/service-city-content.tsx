@@ -266,6 +266,99 @@ function generateFAQs(cityName: string, serviceName: { title: string; singular: 
   return baseFaqs
 }
 
+function getRelatedKeywordPages(serviceId: string): { slug: string; label: string }[] {
+  const KEYWORD_MAP: Record<string, { slug: string; label: string }[]> = {
+    // LABORAL vertical
+    "abogado-laboral": [
+      { slug: "abogado-laboralista", label: "Abogado Laboralista" },
+      { slug: "abogado-despido-improcedente", label: "Despido Improcedente" },
+      { slug: "abogado-despido-disciplinario", label: "Despido Disciplinario" },
+      { slug: "abogado-acoso-laboral", label: "Acoso Laboral" },
+      { slug: "accidente-trabajo", label: "Accidente de Trabajo" },
+      { slug: "abogado-de-oficio", label: "Abogado de Oficio" },
+    ],
+    "abogado-laboralista": [
+      { slug: "abogado-laboral", label: "Abogado Laboral" },
+      { slug: "abogado-despido-improcedente", label: "Despido Improcedente" },
+      { slug: "abogado-despido-disciplinario", label: "Despido Disciplinario" },
+      { slug: "abogado-acoso-laboral", label: "Acoso Laboral" },
+      { slug: "accidente-trabajo", label: "Accidente de Trabajo" },
+    ],
+    // FAMILIA/DIVORCIO vertical
+    "abogado-divorcio": [
+      { slug: "abogado-divorcio-mutuo-acuerdo", label: "Divorcio Mutuo Acuerdo" },
+      { slug: "abogado-separacion-matrimonial", label: "Separacion Matrimonial" },
+      { slug: "abogado-pension-compensatoria", label: "Pension Compensatoria" },
+      { slug: "abogado-pension-alimentos", label: "Pension de Alimentos" },
+      { slug: "abogado-custodia-hijos", label: "Custodia de Hijos" },
+      { slug: "abogado-familia", label: "Abogado de Familia" },
+    ],
+    "abogado-familia": [
+      { slug: "abogado-divorcio", label: "Abogado de Divorcio" },
+      { slug: "abogado-custodia-hijos", label: "Custodia de Hijos" },
+      { slug: "abogado-pension-alimentos", label: "Pension de Alimentos" },
+      { slug: "abogado-violencia-domestica", label: "Violencia Domestica" },
+      { slug: "abogado-separacion-matrimonial", label: "Separacion Matrimonial" },
+      { slug: "abogado-familiar", label: "Abogado Familiar" },
+    ],
+    // HERENCIAS vertical
+    "abogado-herencias": [
+      { slug: "abogado-especialista-herencias", label: "Especialista Herencias" },
+      { slug: "tramitar-herencia", label: "Tramitar Herencia" },
+      { slug: "reclamar-herencia", label: "Reclamar Herencia" },
+    ],
+    // INMOBILIARIO vertical
+    "abogado-inmobiliario": [
+      { slug: "abogado-desahucio", label: "Desahucio" },
+      { slug: "reclamar-gastos-hipoteca", label: "Gastos Hipoteca" },
+      { slug: "reclamar-clausula-suelo", label: "Clausula Suelo" },
+      { slug: "abogado-hipoteca-variable", label: "Hipoteca Variable" },
+      { slug: "abogado-contrato-arrendamiento", label: "Contrato Arrendamiento" },
+      { slug: "abogado-deuda-hipotecaria", label: "Deuda Hipotecaria" },
+    ],
+    // PENAL vertical
+    "abogado-penal": [
+      { slug: "abogado-penalista", label: "Abogado Penalista" },
+      { slug: "recurrir-multa-trafico", label: "Recurrir Multa Trafico" },
+      { slug: "abogado-estafa-internet", label: "Estafa por Internet" },
+      { slug: "abogado-violencia-domestica", label: "Violencia Domestica" },
+    ],
+    // MERCANTIL/EMPRESAS vertical
+    "abogado-empresas": [
+      { slug: "abogado-mercantil", label: "Abogado Mercantil" },
+      { slug: "abogado-concurso-acreedores", label: "Concurso Acreedores" },
+      { slug: "abogado-estafa-internet", label: "Estafa por Internet" },
+    ],
+    "abogado-mercantil": [
+      { slug: "abogado-empresas", label: "Abogado de Empresas" },
+      { slug: "abogado-concurso-acreedores", label: "Concurso Acreedores" },
+      { slug: "abogado-estafa-internet", label: "Estafa por Internet" },
+    ],
+    // ACCIDENTES vertical
+    "abogado-accidentes": [
+      { slug: "reclamar-accidente-trafico", label: "Reclamar Accidente Trafico" },
+      { slug: "accidente-trabajo", label: "Accidente de Trabajo" },
+      { slug: "reclamar-seguro", label: "Reclamar al Seguro" },
+      { slug: "reclamar-seguro-hogar", label: "Reclamar Seguro Hogar" },
+    ],
+    // EXTRANJERIA vertical
+    "abogado-extranjeria": [
+      { slug: "abogado-de-oficio", label: "Abogado de Oficio" },
+      { slug: "consulta-abogado-gratis", label: "Consulta Abogado Gratis" },
+    ],
+  }
+
+  // Return mapped keywords, or a generic set of high-value pages
+  return KEYWORD_MAP[serviceId] || [
+    { slug: "abogado-laboralista", label: "Abogado Laboralista" },
+    { slug: "abogado-desahucio", label: "Desahucio" },
+    { slug: "abogado-despido-improcedente", label: "Despido Improcedente" },
+    { slug: "reclamar-gastos-hipoteca", label: "Gastos Hipoteca" },
+    { slug: "abogado-divorcio", label: "Abogado de Divorcio" },
+    { slug: "consulta-abogado-gratis", label: "Consulta Abogado Gratis" },
+  ]
+}
+
 interface ServiceCityContentProps {
   pageTitle: string
   serviceName: { name: string; title: string; singular: string }
@@ -686,6 +779,32 @@ export function ServiceCityContent({
                 ))}
               </ul>
             </nav>
+          </div>
+        </div>
+      </section>
+
+      {/* Related problem pages - keyword interlinking */}
+      <section className="bg-muted">
+        <div className="px-4 sm:px-6 md:px-12 py-12 sm:py-16 max-w-5xl mx-auto">
+          <p className="text-[9px] sm:text-[10px] tracking-[0.4em] uppercase text-muted-foreground mb-3 font-sans">
+            Problemas legales relacionados
+          </p>
+          <h3 className="font-serif text-xl sm:text-2xl tracking-tight text-foreground mb-8">
+            {`Situaciones frecuentes en ${cityName}`}
+          </h3>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+            {getRelatedKeywordPages(serviceId).map((kw) => (
+              <Link
+                key={kw.slug}
+                href={`/${kw.slug}/${citySlug}/`}
+                className="flex items-center justify-between p-4 bg-card border border-border rounded-xl group hover:border-primary/30 hover:shadow-sm transition-all"
+              >
+                <span className="text-xs sm:text-sm font-sans text-foreground group-hover:text-primary transition-colors">
+                  {kw.label}
+                </span>
+                <ArrowRight className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0" />
+              </Link>
+            ))}
           </div>
         </div>
       </section>

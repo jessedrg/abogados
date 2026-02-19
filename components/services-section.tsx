@@ -59,6 +59,34 @@ export function ServicesSection() {
         "Compraventa de inmuebles, arrendamientos, desahucios, reclamaciones a constructoras y comunidades de propietarios.",
       features: ["Compraventa", "Arrendamientos", "Desahucios"],
     },
+    {
+      title: "Abogado para Desahucios",
+      slug: "abogado-desahucio",
+      description:
+        "Defensa integral frente a desahucios. Negociacion con propietarios, oposicion al desahucio, plazos legales y alternativas habitacionales.",
+      features: ["Oposicion desahucio", "Negociacion", "Defensa inquilino"],
+    },
+    {
+      title: "Abogado Laboralista",
+      slug: "abogado-laboralista",
+      description:
+        "Especialistas en derecho laboral. Despidos, reclamaciones salariales, acoso laboral, ERTEs y todo tipo de conflictos en el trabajo.",
+      features: ["Despido improcedente", "Acoso laboral", "Reclamaciones"],
+    },
+    {
+      title: "Abogado Mercantil",
+      slug: "abogado-mercantil",
+      description:
+        "Derecho mercantil y societario. Constitucion de empresas, concurso de acreedores, contratos mercantiles y conflictos entre socios.",
+      features: ["Concurso acreedores", "Sociedades", "Contratos"],
+    },
+    {
+      title: "Reclamar Gastos Hipoteca",
+      slug: "reclamar-gastos-hipoteca",
+      description:
+        "Recupera los gastos de formalizacion de tu hipoteca. Notaria, registro, gestoria y tasacion. Reclamacion sin adelantos.",
+      features: ["Sin adelantos", "Gastos notaria", "Clausula suelo"],
+    },
   ]
 
   return (

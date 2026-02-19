@@ -3,25 +3,13 @@ import type { Metadata } from "next"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { VALID_SERVICES, MODIFIERS, CITIES, type Service } from "@/lib/sitemap-data"
+import { SERVICE_NAMES } from "@/lib/service-names"
 import { ServiceCityContent } from "@/components/service-city-content"
 
 export const dynamicParams = true
 export const revalidate = 604800
 
 const KNOWN_MODIFIERS = MODIFIERS.filter(m => m !== "").map(m => m.slice(1)) as string[]
-
-const SERVICE_NAMES: Record<Service, { name: string; title: string; singular: string }> = {
-  "abogado-divorcio": { name: "Abogado de Divorcio", title: "Abogados de Divorcio", singular: "abogado de divorcio" },
-  "abogado-herencias": { name: "Abogado de Herencias", title: "Abogados de Herencias", singular: "abogado de herencias" },
-  "abogado-accidentes": { name: "Abogado de Accidentes", title: "Abogados de Accidentes", singular: "abogado de accidentes" },
-  "abogado-laboral": { name: "Abogado Laboral", title: "Abogados Laboralistas", singular: "abogado laboralista" },
-  "abogado-penal": { name: "Abogado Penalista", title: "Abogados Penalistas", singular: "abogado penalista" },
-  "abogado-extranjeria": { name: "Abogado de Extranjeria", title: "Abogados de Extranjeria", singular: "abogado de extranjeria" },
-  "abogado-familia": { name: "Abogado de Familia", title: "Abogados de Familia", singular: "abogado de familia" },
-  "abogado-civil": { name: "Abogado Civil", title: "Abogados Civilistas", singular: "abogado civilista" },
-  "abogado-inmobiliario": { name: "Abogado Inmobiliario", title: "Abogados Inmobiliarios", singular: "abogado inmobiliario" },
-  "abogado-empresas": { name: "Abogado de Empresas", title: "Abogados de Empresas", singular: "abogado de empresas" },
-}
 
 function parseServiceAndModifier(rawService: string): {
   serviceId: Service | null

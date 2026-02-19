@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="bg-foreground text-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           <div>
             <span className="text-3xl font-serif tracking-tight">LEGAL AGENCIA</span>
             <p className="mt-4 text-background/60 leading-relaxed text-sm">
@@ -25,21 +25,40 @@ export function Footer() {
             <nav className="flex flex-col gap-2.5">
               <Link href="/abogado-divorcio/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Abogado de divorcio</Link>
               <Link href="/abogado-herencias/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Abogado de herencias</Link>
-              <Link href="/abogado-laboral/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Abogado laboral</Link>
-              <Link href="/abogado-penal/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Abogado penalista</Link>
+              <Link href="/abogado-laboralista/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Abogado laboralista</Link>
+              <Link href="/abogado-penalista/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Abogado penalista</Link>
               <Link href="/abogado-extranjeria/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Abogado extranjeria</Link>
+              <Link href="/abogado-mercantil/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Abogado mercantil</Link>
+              <Link href="/abogado-familia/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Abogado de familia</Link>
+              <Link href="/abogado-inmobiliario/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Abogado inmobiliario</Link>
+            </nav>
+          </div>
+
+          <div>
+            <p className="font-semibold text-sm uppercase tracking-wider text-background/40 mb-4">Problemas legales</p>
+            <nav className="flex flex-col gap-2.5">
+              <Link href="/abogado-despido-improcedente/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Despido improcedente</Link>
+              <Link href="/abogado-desahucio/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Desahucio</Link>
+              <Link href="/reclamar-gastos-hipoteca/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Gastos hipoteca</Link>
+              <Link href="/reclamar-clausula-suelo/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Clausula suelo</Link>
+              <Link href="/abogado-concurso-acreedores/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Concurso acreedores</Link>
+              <Link href="/recurrir-multa-trafico/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Recurrir multa trafico</Link>
+              <Link href="/abogado-violencia-domestica/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Violencia domestica</Link>
+              <Link href="/consulta-abogado-gratis/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Consulta abogado gratis</Link>
             </nav>
           </div>
 
           <div>
             <p className="font-semibold text-sm uppercase tracking-wider text-background/40 mb-4">Ciudades</p>
             <nav className="flex flex-col gap-2.5">
-              <Link href="/abogado-divorcio/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Abogados en Madrid</Link>
-              <Link href="/abogado-divorcio/barcelona/" className="text-sm text-background/70 hover:text-background transition-colors">Abogados en Barcelona</Link>
-              <Link href="/abogado-divorcio/valencia/" className="text-sm text-background/70 hover:text-background transition-colors">Abogados en Valencia</Link>
-              <Link href="/abogado-divorcio/sevilla/" className="text-sm text-background/70 hover:text-background transition-colors">Abogados en Sevilla</Link>
-              <Link href="/abogado-divorcio/bilbao/" className="text-sm text-background/70 hover:text-background transition-colors">Abogados en Bilbao</Link>
-              <Link href="/abogado-divorcio/malaga/" className="text-sm text-background/70 hover:text-background transition-colors">Abogados en Malaga</Link>
+              <Link href="/abogado-laboral/madrid/" className="text-sm text-background/70 hover:text-background transition-colors">Abogados en Madrid</Link>
+              <Link href="/abogado-laboral/barcelona/" className="text-sm text-background/70 hover:text-background transition-colors">Abogados en Barcelona</Link>
+              <Link href="/abogado-laboral/valencia/" className="text-sm text-background/70 hover:text-background transition-colors">Abogados en Valencia</Link>
+              <Link href="/abogado-laboral/sevilla/" className="text-sm text-background/70 hover:text-background transition-colors">Abogados en Sevilla</Link>
+              <Link href="/abogado-laboral/bilbao/" className="text-sm text-background/70 hover:text-background transition-colors">Abogados en Bilbao</Link>
+              <Link href="/abogado-laboral/malaga/" className="text-sm text-background/70 hover:text-background transition-colors">Abogados en Malaga</Link>
+              <Link href="/abogado-laboral/zaragoza/" className="text-sm text-background/70 hover:text-background transition-colors">Abogados en Zaragoza</Link>
+              <Link href="/abogado-laboral/alicante/" className="text-sm text-background/70 hover:text-background transition-colors">Abogados en Alicante</Link>
             </nav>
           </div>
 

@@ -5,6 +5,7 @@
 // =============================================================================
 
 export const VALID_SERVICES = [
+  // ============ BASE SERVICES (original) ============
   "abogado-divorcio",
   "abogado-herencias",
   "abogado-accidentes",
@@ -14,10 +15,68 @@ export const VALID_SERVICES = [
   "abogado-familia",
   "abogado-civil",
   "abogado-inmobiliario",
-  "abogado-empresas"
+  "abogado-empresas",
+
+  // ============ ALIAS SERVICES (keyword research) ============
+  "abogado-laboralista",       // 18100 vol, CPC €6.46, KD=22
+  "abogado-familiar",          // 1900 vol, CPC €4.65, KD=14
+  "abogado-penalista",         // 6600 vol, CPC €7.96, KD=35
+  "abogado-mercantil",         // 1900 vol, CPC €4.30, KD=1 !!
+  "abogado-de-oficio",         // 5400 vol, CPC €3.05, KD=13
+
+  // ============ LABORAL PROBLEMS ============
+  "abogado-despido-improcedente",  // 18100 vol, KD=16
+  "abogado-despido-disciplinario", // 9900 vol, KD=0
+  "abogado-acoso-laboral",        // from research
+
+  // ============ FAMILIA/DIVORCIO PROBLEMS ============
+  "abogado-separacion-matrimonial", // 590 vol, KD=10
+  "abogado-pension-compensatoria",  // 2400 vol, KD=0
+  "abogado-pension-alimentos",      // 170 vol, KD=16
+  "abogado-custodia-hijos",         // 140 vol, KD=0
+  "abogado-violencia-domestica",    // 2400 vol, KD=18
+  "abogado-divorcio-mutuo-acuerdo", // 590 vol
+
+  // ============ HERENCIAS PROBLEMS ============
+  "abogado-especialista-herencias", // 2400 vol, KD=16
+  "tramitar-herencia",              // 320 vol, KD=2 !!
+  "reclamar-herencia",              // 70 vol, KD=0
+
+  // ============ INMOBILIARIO PROBLEMS ============
+  "abogado-desahucio",             // 18100 vol, KD=0, trend +174%
+  "reclamar-gastos-hipoteca",      // 1900 vol, KD=4
+  "reclamar-clausula-suelo",       // 1900 vol, KD=8
+  "abogado-hipoteca-variable",     // 880 vol, KD=24
+  "abogado-contrato-arrendamiento", // 390 vol, KD=14
+  "abogado-deuda-hipotecaria",     // 50 vol, CPC €5.85
+
+  // ============ MERCANTIL/EMPRESAS ============
+  "abogado-concurso-acreedores",   // 1900 vol, CPC €5.34, KD=15
+  "abogado-estafa-internet",       // 170 vol, KD=31
+
+  // ============ SEGUROS ============
+  "reclamar-seguro",               // 480 vol, CPC €4.46, KD=5
+  "reclamar-seguro-hogar",         // 90 vol, CPC €4.01, KD=0
+  "reclamar-accidente-trafico",    // KD=9
+
+  // ============ TRÁFICO/MULTAS ============
+  "recurrir-multa-trafico",        // 2900 vol, KD=36
+  "recurso-multa-trafico",         // 260 vol, CPC €6.45, KD=27
+  "accidente-trabajo",             // 210 vol, KD=0
+
+  // ============ CONSULTA GRATUITA ============
+  "consulta-abogado-gratis",       // 1600 vol, KD=45
 ] as const;
 
 export type Service = typeof VALID_SERVICES[number];
+
+// Base services get modifiers (urgente, economico, etc.). Problem-specific services only get city pages.
+export const BASE_SERVICES: readonly Service[] = [
+  "abogado-divorcio", "abogado-herencias", "abogado-accidentes",
+  "abogado-laboral", "abogado-penal", "abogado-extranjeria",
+  "abogado-familia", "abogado-civil", "abogado-inmobiliario", "abogado-empresas",
+  "abogado-laboralista", "abogado-familiar", "abogado-penalista", "abogado-mercantil",
+] as const;
 
 // Alias for compatibility
 export const VALID_PROFESSIONS = VALID_SERVICES;
@@ -64,6 +123,7 @@ export type Modifier = typeof MODIFIERS[number];
 // SITUACIONES POR SERVICIO
 // =============================================================================
 export const PROBLEMS: Record<Service, readonly string[]> = {
+  // ============ BASE SERVICES ============
   "abogado-divorcio": [
     "quiero-divorciarme", "separacion", "custodia-hijos",
     "pension-compensatoria", "reparto-bienes", "divorcio-rapido",
@@ -104,6 +164,52 @@ export const PROBLEMS: Record<Service, readonly string[]> = {
     "constituir-empresa", "contratos-mercantiles", "socios",
     "concurso-acreedores", "deudas-empresa",
   ],
+  // ============ ALIAS SERVICES ============
+  "abogado-laboralista": [
+    "despido", "despido-improcedente", "no-me-pagan",
+    "acoso-laboral", "horas-extras", "finiquito",
+  ],
+  "abogado-familiar": [
+    "custodia", "regimen-visitas", "pension-alimentos",
+    "patria-potestad", "adopcion", "tutela",
+  ],
+  "abogado-penalista": [
+    "detenido", "denuncia", "me-acusan",
+    "juicio-rapido", "antecedentes", "delito",
+  ],
+  "abogado-mercantil": [
+    "constituir-empresa", "contratos-mercantiles", "socios",
+    "concurso-acreedores", "deudas-empresa",
+  ],
+  "abogado-de-oficio": [],
+  // ============ PROBLEM-SPECIFIC (no sub-problems needed) ============
+  "abogado-despido-improcedente": [],
+  "abogado-despido-disciplinario": [],
+  "abogado-acoso-laboral": [],
+  "abogado-separacion-matrimonial": [],
+  "abogado-pension-compensatoria": [],
+  "abogado-pension-alimentos": [],
+  "abogado-custodia-hijos": [],
+  "abogado-violencia-domestica": [],
+  "abogado-divorcio-mutuo-acuerdo": [],
+  "abogado-especialista-herencias": [],
+  "tramitar-herencia": [],
+  "reclamar-herencia": [],
+  "abogado-desahucio": [],
+  "reclamar-gastos-hipoteca": [],
+  "reclamar-clausula-suelo": [],
+  "abogado-hipoteca-variable": [],
+  "abogado-contrato-arrendamiento": [],
+  "abogado-deuda-hipotecaria": [],
+  "abogado-concurso-acreedores": [],
+  "abogado-estafa-internet": [],
+  "reclamar-seguro": [],
+  "reclamar-seguro-hogar": [],
+  "reclamar-accidente-trafico": [],
+  "recurrir-multa-trafico": [],
+  "recurso-multa-trafico": [],
+  "accidente-trabajo": [],
+  "consulta-abogado-gratis": [],
 } as const;
 
 // =============================================================================

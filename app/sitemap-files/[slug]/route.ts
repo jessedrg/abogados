@@ -16,6 +16,17 @@ export async function GET(request: Request, { params }: { params: Promise<{ slug
 
     const urls: string[] = []
 
+    // Handle national pages sitemap (single-slug pages without city)
+    if (id === "national-pages") {
+      for (const service of VALID_SERVICES) {
+        urls.push(`${baseUrl}/${service}/`)
+      }
+      // Near-me pages
+      urls.push(`${baseUrl}/abogado-cerca-de-mi/`)
+      urls.push(`${baseUrl}/abogado-laboralista-cerca-de-mi/`)
+      urls.push(`${baseUrl}/abogado-laboral-cerca-de-mi/`)
+    }
+
     // Handle chunked necesidad sitemaps: abogado-divorcio-necesidad-1, etc.
     const necesidadMatch = id.match(/^(.+)-necesidad-(\d+)$/)
     if (necesidadMatch) {
