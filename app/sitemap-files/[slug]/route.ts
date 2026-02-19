@@ -16,7 +16,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ slug
 
     const urls: string[] = []
 
-    // Handle chunked necesidad sitemaps: residencias-ancianos-necesidad-1, etc.
+    // Handle chunked necesidad sitemaps: abogado-divorcio-necesidad-1, etc.
     const necesidadMatch = id.match(/^(.+)-necesidad-(\d+)$/)
     if (necesidadMatch) {
       const service = necesidadMatch[1] as Service

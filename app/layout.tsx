@@ -1,27 +1,28 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Playfair_Display } from "next/font/google"
+import { DM_Sans, DM_Serif_Display } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
-const _inter = Inter({ subsets: ["latin"] })
-const _playfair = Playfair_Display({ subsets: ["latin"] })
+const _dmSans = DM_Sans({ subsets: ["latin"] })
+const _dmSerif = DM_Serif_Display({ weight: "400", subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "SERENA — Encuentra la residencia perfecta para tu ser querido",
+  metadataBase: new URL("https://www.legalagencia.com"),
+  title: "LEGAL AGENCIA — Encuentra el abogado perfecto para tu caso",
   description:
-    "Somos la agencia que conecta familias con las mejores residencias de mayores. Te ayudamos a encontrar el lugar ideal donde tu ser querido recibirá el cuidado que merece.",
+    "Conectamos clientes con los mejores abogados de España. Primera consulta gratuita. Abogados especializados en divorcio, herencias, laboral, penal y mas.",
   generator: "v0.app",
   openGraph: {
-    title: "SERENA — Encuentra la residencia perfecta",
+    title: "LEGAL AGENCIA — Encuentra el abogado perfecto",
     description:
-      "Te ayudamos a encontrar la mejor residencia para tu ser querido. Asesoramiento personalizado y gratuito.",
+      "Te ayudamos a encontrar el mejor abogado para tu caso. Asesoramiento personalizado y primera consulta gratuita.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "SERENA - Cuidado de mayores",
+        alt: "LEGAL AGENCIA - Abogados especializados",
       },
     ],
     locale: "es_ES",
@@ -29,8 +30,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SERENA — Encuentra la residencia perfecta",
-    description: "Te ayudamos a encontrar la mejor residencia para tu ser querido.",
+    title: "LEGAL AGENCIA — Encuentra el abogado perfecto",
+    description: "Te ayudamos a encontrar el mejor abogado para tu caso.",
     images: ["/og-image.jpg"],
   },
   icons: {
@@ -58,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body className={`font-sans antialiased`}>
         {children}
         <Analytics />
